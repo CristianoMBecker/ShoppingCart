@@ -72,15 +72,15 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
-const items = document.querySelector('.items')
-const teste = 'alestorm'
+const items = document.querySelector('.items');
+const teste = 'alestorm';
 
 const results = async () => {
   const dados = await fetchProducts('computador');
   dados.results.forEach((pc) => {
     items.appendChild(createProductItemElement(pc));
-  })
-}
+  });
+};
 
 window.onload = () => {
   results();
