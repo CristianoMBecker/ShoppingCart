@@ -58,7 +58,7 @@ const getIdFromProductItem = (product) => product.querySelector('span.id').inner
 
 const cartItemClickListener = (li) => {
   cart.removeChild(li);
-}
+};
 
 /**
  * Função responsável por criar e retornar um item do carrinho.
@@ -91,7 +91,7 @@ const results = async () => {
     btt.addEventListener('click', () => {
       createCartItemElement(results[index]);
     });
-  })
+  });
 };
 
 window.onload = () => {
