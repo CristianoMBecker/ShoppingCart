@@ -15,6 +15,8 @@ const createProductImageElement = (imageSource) => {
   return img;
 };
 
+const cart = document.querySelector('.cart__items');
+
 /**
  * Função responsável por criar e retornar qualquer elemento.
  * @param {string} element - Nome do elemento a ser criado.
@@ -79,9 +81,8 @@ const createCartItemElement = ({ id, title, price }) => {
 };
 
 const items = document.querySelector('.items');
-const cart = document.querySelector('.cart__items');
 
-const results = async () => {
+const shoppingCart = async () => {
   const { results } = await fetchProducts('computador');
   results.forEach((pc) => {
     items.appendChild(createProductItemElement(pc));
@@ -95,5 +96,5 @@ const results = async () => {
 };
 
 window.onload = () => {
-  results();
+  shoppingCart();
 };
