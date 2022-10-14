@@ -98,7 +98,7 @@ const shoppingCart = async () => {
 const cleaner = document.querySelector('.empty-cart');
 cleaner.addEventListener('click', () => {
   cart.innerText = '';
-})
+});
 
 window.onload = () => {
   shoppingCart();
