@@ -17,9 +17,10 @@ const createProductImageElement = (imageSource) => {
 
 const cart = document.querySelector('.cart__items');
 
-const saveItems = (saveText) => {
-  console.log(saveText);
-}
+const saveLocal = () => {
+  saveCartItems(JSON.stringify('PARTY'));
+  console.log(JSON.parse(getSavedCartItems()));
+};
 
 /**
  * Função responsável por criar e retornar qualquer elemento.
@@ -82,7 +83,7 @@ const createCartItemElement = ({ id, title, price }) => {
     cartItemClickListener(li);
   });
     cart.appendChild(li);
-    saveItems(li.innerText);
+    saveLocal();
 };
 
 const items = document.querySelector('.items');
@@ -103,7 +104,6 @@ const shoppingCart = async () => {
 const cleaner = document.querySelector('.empty-cart');
 cleaner.addEventListener('click', () => {
   cart.innerText = '';
-  localStorage.clear();
 });
 
 window.onload = () => {
