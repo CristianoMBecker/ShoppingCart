@@ -102,4 +102,4 @@ cleaner.addEventListener('click', () => {
 
 window.onload = () => {
   shoppingCart();
-  };
+};
