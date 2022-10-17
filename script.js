@@ -22,7 +22,10 @@ const saveLocal = () => {
   const savedItems = document.querySelectorAll('.insideCart');
   savedItems.forEach((pc) => {
     const pcDivided = pc.innerText.split(' | ');
-    const dados = Object.values(pcDivided).map((dado) => dado.replace('ID: ', '').replace('TITLE: ', '').replace('PRICE: $', ''))
+    const dados = Object.values(pcDivided).map((dado) => dado
+    .replace('ID: ', '')
+    .replace('TITLE: ', '')
+    .replace('PRICE: $', ''));
       allItems.push({
         id: dados[0],
         title: dados[1],
@@ -31,13 +34,6 @@ const saveLocal = () => {
     });
   saveCartItems(JSON.stringify(allItems));
 };
-
-const rescueLocal = () => {
-  if (!localStorage.getItem('cartItem')) return;
-
-  const saved = JSON.parse(getSavedCartItems());
-  saved.forEach((savedPC) => createCartItemElement(savedPC));
-}
 
 /**
  * Função responsável por criar e retornar qualquer elemento.
@@ -105,6 +101,13 @@ const createCartItemElement = ({ id, title, price }) => {
 };
 
 const items = document.querySelector('.items');
+
+const rescueLocal = () => {
+  if (!localStorage.getItem('cartItem')) return;
+
+  const saved = JSON.parse(getSavedCartItems());
+  saved.forEach((savedPC) => createCartItemElement(savedPC));
+};
 
 const shoppingCart = async () => {
   rescueLocal();
