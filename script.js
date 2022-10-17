@@ -17,12 +17,27 @@ const createProductImageElement = (imageSource) => {
 
 const cart = document.querySelector('.cart__items');
 
-const saveLocal = (id, title, price) => {
+const saveLocal = () => {
   const allItems = [];
-  const obj = { id, title, price };
-  allItems.push(obj);
-  console.log(allItems);
+  const savedItems = document.querySelectorAll('.insideCart');
+  savedItems.forEach((pc) => {
+    const pcDivided = pc.innerText.split(' | ');
+    const dados = Object.values(pcDivided).map((dado) => dado.replace('ID: ', '').replace('TITLE: ', '').replace('PRICE: $', ''))
+      allItems.push({
+        id: dados[0],
+        title: dados[1],
+        price: dados[2],
+      });
+    });
+  saveCartItems(JSON.stringify(allItems));
 };
+
+const rescueLocal = () => {
+  if (!localStorage.getItem('cartItem')) return;
+
+  const saved = JSON.parse(getSavedCartItems());
+  saved.forEach((savedPC) => createCartItemElement(savedPC));
+}
 
 /**
  * Função responsável por criar e retornar qualquer elemento.
@@ -80,17 +95,19 @@ const cartItemClickListener = (li) => {
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.classList.add('ale');
+  li.classList.add('insideCart');
   li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
   li.addEventListener('click', () => {
     cartItemClickListener(li);
   });
     cart.appendChild(li);
+    saveLocal();
 };
 
 const items = document.querySelector('.items');
 
 const shoppingCart = async () => {
+  rescueLocal();
   const { results } = await fetchProducts('computador');
   results.forEach((pc) => {
     items.appendChild(createProductItemElement(pc));
@@ -99,7 +116,6 @@ const shoppingCart = async () => {
   botoes.forEach((btt, index) => {
     btt.addEventListener('click', () => {
       createCartItemElement(results[index]);
-      saveLocal(results[index].id, results[index].title, results[index].price);
     });
   });
 };
@@ -107,6 +123,7 @@ const shoppingCart = async () => {
 const cleaner = document.querySelector('.empty-cart');
 cleaner.addEventListener('click', () => {
   cart.innerText = '';
+  localStorage.clear();
 });
 
 window.onload = () => {
