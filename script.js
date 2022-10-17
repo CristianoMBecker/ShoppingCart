@@ -17,9 +17,11 @@ const createProductImageElement = (imageSource) => {
 
 const cart = document.querySelector('.cart__items');
 
-const saveLocal = () => {
-  saveCartItems(JSON.stringify('PARTY'));
-  console.log(JSON.parse(getSavedCartItems()));
+const saveLocal = (id, title, price) => {
+  const allItems = [];
+  const obj = { id, title, price };
+  allItems.push(obj);
+  console.log(allItems);
 };
 
 /**
@@ -78,12 +80,12 @@ const cartItemClickListener = (li) => {
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
+  li.classList.add('ale');
   li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
   li.addEventListener('click', () => {
     cartItemClickListener(li);
   });
     cart.appendChild(li);
-    saveLocal();
 };
 
 const items = document.querySelector('.items');
@@ -97,6 +99,7 @@ const shoppingCart = async () => {
   botoes.forEach((btt, index) => {
     btt.addEventListener('click', () => {
       createCartItemElement(results[index]);
+      saveLocal(results[index].id, results[index].title, results[index].price);
     });
   });
 };
