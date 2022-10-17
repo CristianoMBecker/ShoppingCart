@@ -17,6 +17,10 @@ const createProductImageElement = (imageSource) => {
 
 const cart = document.querySelector('.cart__items');
 
+const saveItems = (saveText) => {
+  console.log(saveText);
+}
+
 /**
  * Função responsável por criar e retornar qualquer elemento.
  * @param {string} element - Nome do elemento a ser criado.
@@ -78,6 +82,7 @@ const createCartItemElement = ({ id, title, price }) => {
     cartItemClickListener(li);
   });
     cart.appendChild(li);
+    saveItems(li.innerText);
 };
 
 const items = document.querySelector('.items');
@@ -98,6 +103,7 @@ const shoppingCart = async () => {
 const cleaner = document.querySelector('.empty-cart');
 cleaner.addEventListener('click', () => {
   cart.innerText = '';
+  localStorage.clear();
 });
 
 window.onload = () => {
