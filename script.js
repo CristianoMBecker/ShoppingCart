@@ -131,12 +131,22 @@ const rescueLocal = () => {
   CalculatePrice();
 };
 
+const loading = () => {
+  const wait = document.createElement('h1');
+  wait.innerText = 'Carregando...';
+  wait.classList = 'loading';
+  return wait;
+};
+
 const shoppingCart = async () => {
   rescueLocal();
+  items.appendChild(loading());
   const { results } = await fetchProducts('computador');
   results.forEach((pc) => {
     items.appendChild(createProductItemElement(pc));
   });
+  const deleteLoading = document.querySelector('.loading');
+  items.removeChild(deleteLoading);
   const botoes = document.querySelectorAll('.item__add');
   botoes.forEach((btt, index) => {
     btt.addEventListener('click', () => {
