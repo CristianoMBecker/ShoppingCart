@@ -1,13 +1,27 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+## Descrição
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Esse é um protótipo de loja virtual, é uma aplicação básica apenas contendo o front end, onde eu usei uma API do mercado livre para montar uma estrutura de loja digital, aí clicando em algum produto ele vai para o seu carrinho, e calcula o total da compra, e quando se clica em um item já dentro do carrinho, ele vai ser tirado do carrinho, e o preço do produto é descontado do total, há também o botão de 'esvaziar carrinho' para tirar todos os produtos do carrinho.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+## Tecnologias Utilizadas
+
+- HTML
+- CSS
+- JavaScript
+- API do Mercado Livre
+- LocalStorage
+
+## Como abrir a aplicação
+
+Você deve clonar o repositório para a sua máquina, quando ja tiver os arquivos no seu PC, pode usar a extensão LiveServer para rodar a aplicação, alternativamente, funciona se der um duplo clique no arquivo index.html, qualquer jeito usado abrirá a aplicação em seu navegador.
+
+## Funcionalidades
+
+- Ver os produtos
+- Colocar produtos no carrinho
+- Tirar produtos do carrinho
+- Calcular o total da compra
+- Salvar o estado no LocalStorage
+
+## Conclusão
+
+É um projeto um pouco mais antigo que fiz, onde usei apenas JS puro, e também não há integração com back end, mas aprendi bastante fazendo ele e acho que funciona de uma maneira interessante
